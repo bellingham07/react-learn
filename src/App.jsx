@@ -1,6 +1,6 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 
-function Square({value, onSquareClick, myRef}) {
+function Square({ value, onSquareClick, myRef }) {
     return (
         <>
             <div className="square">
@@ -44,7 +44,7 @@ function calculateWinner(squares, myRef) {
     return null;
 }
 
-function Board({xIsNext, squares, onPlay, myRef}) {
+function Board({ xIsNext, squares, onPlay, myRef }) {
     function handleClick(i) {
         if (calculateWinner(squares, myRef) || squares[i]) {
             return;
@@ -66,16 +66,20 @@ function Board({xIsNext, squares, onPlay, myRef}) {
         status = 'Next player: ' + (xIsNext ? 'X' : 'O');
     }
 
+    if (!winner && squares.every(Boolean)) {
+        status = '平局';
+    }
+
     return (
         <>
             {/* 当前棋手 */}
             <div className='status'>{status}</div>
             {/* 棋盘 */}
-            {Array.from({length: 3}, (_, i) => (
+            {Array.from({ length: 3 }, (_, i) => (
                 <div key={i} className="board-row">
-                    {Array.from({length: 3}, (_, j) => (
+                    {Array.from({ length: 3 }, (_, j) => (
                         <Square key={j} value={squares[i * 3 + j]} onSquareClick={() => handleClick(i * 3 + j)}
-                                myRef={myRef.current[i * 3 + j]}/>
+                            myRef={myRef.current[i * 3 + j]} />
                     ))}
                 </div>
             ))}
@@ -120,7 +124,14 @@ function Game() {
     }
 
     function jumpTo(nextMove) {
+        setZero();
         setCurrentMove(nextMove);
+    }
+
+    function setZero() {
+        inputRef.current.forEach((item) => {
+            item.current.style.backgroundColor = '#fff';
+        });
     }
 
     const changeIsAscending = () => {
@@ -131,16 +142,8 @@ function Game() {
         let description;
         if (move > 0) {
             const previousSquares = history[move - 1];
-            // console.log('1',Array.isArray(previousSquares));
-            // console.log('2',Array.isArray(squares));
-            // console.log("len:",previousSquares.length);
-            // console.log("len2:",squares.length);
-            const coo = computeCoordinates(squares,previousSquares);
-            console.log("comp:",computeCoordinates(squares,previousSquares));
-            // console.log("row, col: ", row,col);
+            const coo = computeCoordinates(squares, previousSquares);
             description = 'Go to move #' + move + 'row:' + coo[0] + 'col:' + coo[1];
-            // console.log(typeof squares)
-            // console.log("squares:", squares)
         } else {
             description = 'Go to game start';
         }
@@ -157,7 +160,7 @@ function Game() {
     return (
         <div className="game">
             <div className="game-board">
-                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} myRef={inputRef}/>
+                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} myRef={inputRef} />
             </div>
             <div className="game-info">
                 <button onClick={changeIsAscending}>Change to {isAscending ? 'Ascending' : 'Descending'}</button>
@@ -169,8 +172,8 @@ function Game() {
 
 function computeCoordinates(oldSquare, newSquare) {
     // 检查old square是不是全为空
-    console.log("old:",Array.isArray(oldSquare));
-    console.log("new:",Array.isArray(newSquare));
+    console.log("old:", Array.isArray(oldSquare));
+    console.log("new:", Array.isArray(newSquare));
     const isAllNull = oldSquare.every(element => element === null);
     if (isAllNull) {
         for (let i = 0; i < 9; i++) {
@@ -192,13 +195,13 @@ function computeCoordinates(oldSquare, newSquare) {
 function getCoordinates(index, cols = 3) {
     const row = Math.floor(index / cols) + 1; // 行从1开始
     const col = (index % cols) + 1;           // 列从1开始
-    return [row , col ]; // 如果你想保持输出与原始问题一致，即行从0开始，列从0开始
+    return [row, col]; // 如果你想保持输出与原始问题一致，即行从0开始，列从0开始
 }
 
 export default function App() {
     return (
         <div>
-            <Game/>
+            <Game />
         </div>
     );
 }
