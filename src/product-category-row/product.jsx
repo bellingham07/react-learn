@@ -1,19 +1,41 @@
+import { useState } from "react";
+
 export default function FilterProduct({ product }) {
+    const [filterText, setFilterText] = useState('');
+    const [inStockOnly, setInStockOnly] = useState(false);
+
     return (
         <>
-            <SearchComponents />
-            <ProductComponent products={product} />
+            <SearchComponents
+                filterText={filterText}
+                inStockOnly={inStockOnly}
+                onFilterTextChange={setFilterText}
+                onInStockOnlyChange={setInStockOnly}
+            />
+            <ProductComponent
+                products={product}
+                filterText={filterText}
+                inStockOnly={inStockOnly}
+            />
         </>
     )
 }
 
-function SearchComponents() {
+function SearchComponents({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyChange }) {
     return (
         <>
             <form>
-                <input type="text" placeholder="Search..." />
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={filterText}
+                    onChange={(e) => onFilterTextChange(e.target.value)}
+                />
                 <label >
-                    <input type="checkbox" />
+                    <input
+                        type="checkbox"
+                        value={inStockOnly}
+                        onChange={(e) => onInStockOnlyChange(e.target.checked)} />
                     {' '}
                     Only show products in stock
                 </label>
@@ -22,12 +44,21 @@ function SearchComponents() {
     )
 }
 
-function ProductComponent({ products }) {
+function ProductComponent({ products, filterText, inStockOnly }) {
     const rows = []
     let isCategory = null
 
     products.forEach((product) => {
-        if (isCategory !== product.category) {
+        if (
+            product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1
+        ) {
+            return;
+        }
+
+        if (inStockOnly && !product.stocked) {
+            return;
+        }
+        if (product.category !== isCategory) {
             rows.push(
                 <CategoryRow category={product.category} key={product.category} />
             )
@@ -74,3 +105,16 @@ function ProductRow({ product }) {
         </tr>
     )
 }
+
+export const PRODUCTS = [
+    { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
+    { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
+    { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
+    { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
+    { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
+    { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
+];
+
+// todo 组件的导入和数据的导入不能放一块
+// import FilterProduct from "./product-category-row/product";
+// import { PRODUCTS } from "./product-category-row/product";

@@ -1,14 +1,22 @@
 import FilterProduct from "./product-category-row/product";
-
+import { PRODUCTS } from "./product-category-row/product";
+import { Gallery } from "./profile/gallery";
+import { Profile } from "./profile/profile";
+import { CurrentDevice } from "./use-device/device";
+import { MyComponent } from "./use-device/device-detect";
+import TodoList from "./use-device/todolist";
+import Clock from "./profile/clock";
+import Profile2 from "./profile/profile2";
+import Condition from "./condition/condition";
 export default function App() {
-    return <FilterProduct product={PRODUCTS} />
+    return (
+        <>
+            {/* <CurrentDevice />
+            <MyComponent /> */}
+            {/* <Profile2 /> */}
+            {/* <TodoList /> */}
+            {/* <Clock /> */}
+            <Condition />
+        </>
+    )
 }
-
-const PRODUCTS = [
-    { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
-    { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
-    { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
-    { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
-    { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
-    { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
-];
