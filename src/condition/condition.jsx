@@ -1,9 +1,19 @@
 function Item({ isPacked, name }) {
-    if (isPacked) {
-        return <li >{name}✅</li>
-    } else {
-        return <li >{name}</li>
-    }
+    // if (isPacked) {
+    //     return <li >{name}✅</li>
+    // } else {
+    //     return <li >{name}</li>
+    // }
+    // return <li>{isPacked ? `${name}✅` : name}</li>
+    return (
+        <>
+            <li>
+                {
+                    isPacked ? (<del>{name},✅</del>) : (name)
+                }
+            </li>
+        </>
+    )
 }
 
 export default function Condition() {
