@@ -6,5 +6,7 @@ import './css/styles.css'
 // main.jsx 是整个项目的入口文件
 
 createRoot(document.getElementById('root')).render(
-    <App />
+    <StrictMode>
+        <App />
+    </StrictMode>
 )
