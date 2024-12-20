@@ -5,6 +5,9 @@ import RespondingEvents from "./add-interaction/RespondingEvents";
 import ChatApp from "./status-manage/chat/chat-app";
 import EditProfile from "./status-manage/response-input/edit-profile";
 import Picture from "./status-manage/response-input/response";
+import ContactManager from "./status-manage/save-state/SaveState";
+import FilterableList from "./status-manage/share-state/share";
+import TravelPlan from "./status-manage/state-struct/struct";
 
 export default function App() {
     return (
@@ -15,7 +18,10 @@ export default function App() {
             {/* <TaskApp /> */}
             {/* <ChatApp /> */}
             {/* <Picture /> */}
-            <EditProfile />
+            {/* <EditProfile /> */}
+            {/* <TravelPlan /> */}
+            {/* <FilterableList /> */}
+            <ContactManager />
         </>
     );
 }
