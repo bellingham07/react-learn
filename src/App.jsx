@@ -8,6 +8,7 @@ import Picture from "./status-manage/response-input/response";
 import ContactManager from "./status-manage/save-state/SaveState";
 import FilterableList from "./status-manage/share-state/share";
 import TravelPlan from "./status-manage/state-struct/struct";
+import SvgIcon from "./svg/svg.jsx";
 
 export default function App() {
     return (
@@ -21,7 +22,11 @@ export default function App() {
             {/* <EditProfile /> */}
             {/* <TravelPlan /> */}
             {/* <FilterableList /> */}
-            <ContactManager />
+            {/*<ContactManager />*/}
+            <div>
+                <SvgIcon iconName="icon-about" className="about-icon"/>
+                {/*<SvgIcon iconName="user" className="user-icon"/>*/}
+            </div>
         </>
     );
 }
