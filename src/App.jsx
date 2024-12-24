@@ -12,6 +12,7 @@ import SvgIcon from "./svg/svg.jsx";
 import SVGIcon from "./svg/svgTwo.jsx";
 import TestRender from "./test-render/TestRender.jsx";
 import Menu from "./transition/MenuTransition.jsx";
+import TestTransition from "./transition/TestTransition.jsx";
 import TransitionComponent from "./transition/TransitionComponent.jsx";
 
 export default function App() {
@@ -29,7 +30,8 @@ export default function App() {
             {/*<ContactManager />*/}
             {/* <TransitionComponent/> */}
             {/* <Menu isMobileView={false} /> */}
-            <TestRender />
+            {/* <TestRender /> */}
+            <TestTransition />
         </>
     );
 }
