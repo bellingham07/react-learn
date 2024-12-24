@@ -14,6 +14,8 @@ import TestRender from "./test-render/TestRender.jsx";
 import Menu from "./transition/MenuTransition.jsx";
 import TestTransition from "./transition/TestTransition.jsx";
 import TransitionComponent from "./transition/TransitionComponent.jsx";
+import MenuTwo from "./transition/MenuTransitionTwo.jsx";
+import MenuFour from "./transition/MenuTransitionThree.jsx";
 
 export default function App() {
     return (
@@ -29,7 +31,9 @@ export default function App() {
             {/* <FilterableList /> */}
             {/*<ContactManager />*/}
             {/* <TransitionComponent/> */}
-             <Menu isMobileView={false} />
+            {/*<MenuTwo isMobileView={false} />*/}
+            <MenuFour isMobileView={false} />
+            {/*<Menu isMobileView={false} />*/}
             {/* <TestRender /> */}
             {/*<TestTransition />*/}
         </>
