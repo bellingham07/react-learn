@@ -10,6 +10,8 @@ import FilterableList from "./status-manage/share-state/share";
 import TravelPlan from "./status-manage/state-struct/struct";
 import SvgIcon from "./svg/svg.jsx";
 import SVGIcon from "./svg/svgTwo.jsx";
+import TestRender from "./test-render/TestRender.jsx";
+import Menu from "./transition/MenuTransition.jsx";
 import TransitionComponent from "./transition/TransitionComponent.jsx";
 
 export default function App() {
@@ -25,7 +27,9 @@ export default function App() {
             {/* <TravelPlan /> */}
             {/* <FilterableList /> */}
             {/*<ContactManager />*/}
-            <TransitionComponent/>
+            {/* <TransitionComponent/> */}
+            {/* <Menu isMobileView={false} /> */}
+            <TestRender />
         </>
     );
 }
