@@ -29,9 +29,9 @@ export default function App() {
             {/* <FilterableList /> */}
             {/*<ContactManager />*/}
             {/* <TransitionComponent/> */}
-            {/* <Menu isMobileView={false} /> */}
+             <Menu isMobileView={false} />
             {/* <TestRender /> */}
-            <TestTransition />
+            {/*<TestTransition />*/}
         </>
     );
 }

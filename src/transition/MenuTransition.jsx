@@ -88,9 +88,10 @@ export default function Menu({ isMobileView }) {
     ]
 
     function handleShow() {
-        setIsShowOrderDialog(!isShowOrderDialog)
-        setIsShow(!isShow);
-        setMaskShow(!maskShow)
+        setIsShowOrderDialog(true)
+        setIsShow(true);
+        setMaskShow(true);
+        setItemShow(true);
     }
 
     function handleClose() {
@@ -180,9 +181,7 @@ export default function Menu({ isMobileView }) {
                 {isShow === true && (
                     <div>
                         <CSSTransition in={isShow && maskShow} timeout={300} unmountOnExit>
-                            {isShow && maskShow && (
                                 <div className="menu-mask" onClick={handleClose} />
-                            )}
                         </CSSTransition>
                         <div className="menu">
                             {menuList.map((row) => (
@@ -190,28 +189,32 @@ export default function Menu({ isMobileView }) {
                                     <TransitionGroup component={null}>
                                         {row.detail.map((item) => (
                                             <CSSTransition
+                                                in={isShow&&itemShow}
                                                 key={item.id}
                                                 timeout={300}
                                                 classNames={`cell_${item.pos}`}
                                             >
-                                                {isShow && itemShow ? (
-                                                    <div
-                                                        className={`menu-cell cell_${item.pos}`}
-                                                        onClick={() => handleCellClick(item.id)}
-                                                    >
-                                                        <div className="menu-cell-inside">
-                                                            <div className="menu-cell--normal rect">
-                                                                <SvgIcon name={item.icon}></SvgIcon>
-                                                                <div>{item.title}</div>
-                                                            </div>
-                                                            <a href={item.to}>
-                                                                <div className="menu-cell--flip rect">
-                                                                    {item.title}
+                                                <>
+                                                    {isShow && itemShow ? (
+                                                        <div
+                                                            className={`menu-cell cell_${item.pos}`}
+                                                            onClick={() => handleCellClick(item.id)}
+                                                        >
+                                                            <div className="menu-cell-inside">
+                                                                <div className="menu-cell--normal rect">
+                                                                    <SvgIcon name={item.icon}></SvgIcon>
+                                                                    <div>{item.title}</div>
                                                                 </div>
-                                                            </a>
+                                                                <a href={item.to}>
+                                                                    <div className="menu-cell--flip rect">
+                                                                        {item.title}
+                                                                    </div>
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                ) : null}
+                                                    ) : null}
+                                                </>
+
                                             </CSSTransition>
                                         ))}
                                     </TransitionGroup>
