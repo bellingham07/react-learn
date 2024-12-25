@@ -16,6 +16,7 @@ import TestTransition from "./transition/TestTransition.jsx";
 import TransitionComponent from "./transition/TransitionComponent.jsx";
 import MenuTwo from "./transition/MenuTransitionTwo.jsx";
 import MenuFour from "./transition/MenuTransitionThree.jsx";
+import ComputeStyle from "./transition/ComputeStyle.jsx";
 
 export default function App() {
     return (
@@ -32,7 +33,8 @@ export default function App() {
             {/*<ContactManager />*/}
             {/* <TransitionComponent/> */}
             {/*<MenuTwo isMobileView={false} />*/}
-            <MenuFour isMobileView={false} />
+            {/* <MenuFour isMobileView={false} /> */}
+            <ComputeStyle />
             {/*<Menu isMobileView={false} />*/}
             {/* <TestRender /> */}
             {/*<TestTransition />*/}

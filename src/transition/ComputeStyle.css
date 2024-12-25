@@ -1,0 +1,15 @@
+.a1{
+    background-color: red;
+}
+.b2{
+    background-color: yellow;
+}
+.c3{
+    background-color: blue;
+}
+
+.box{
+    border: 1px solid #000;
+    width: 100px;
+    height: 100px;
+}
