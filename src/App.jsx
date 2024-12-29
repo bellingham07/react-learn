@@ -1,12 +1,25 @@
-// import IconRegistry from "./svg/AllSvg";
-import SvgIcon from "./svg/svg";
+import { useState } from "react";
+import Toast from "./toast/Toast";
+import Demo1 from "./usecontext/demo1.jsx";
 
-export default function App() {
+const App = () => {
+    // const [showToast, setShowToast] = useState(false);
+    //
+    // const handleShowToast = () => {
+    //     setShowToast(true); // 显示 Toast
+    // };
+
     return (
-        <>
-            123
-            {/* <IconRegistry /> */}
-            <SvgIcon name={'icon-menu'} />
-        </>
+        <div>
+            {/*<button onClick={handleShowToast}>Show Toast</button>*/}
+            {/*<Toast*/}
+            {/*    message="caojinbo"*/}
+            {/*    visible={showToast}*/}
+            {/*    closeHandle={setShowToast} // 关闭时调用 setShowToast(false)*/}
+            {/*/>*/}
+            <Demo1/>
+        </div>
     );
-}
+};
+
+export default App;
